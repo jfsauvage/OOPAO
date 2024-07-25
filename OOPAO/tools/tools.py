@@ -15,7 +15,7 @@ import skimage.transform as sk
 from astropy.io import fits as pfits
 from OOPAO.tools import *
 import matplotlib.pyplot as plt
-from libraryToolsProcessing import cog
+# from libraryToolsProcessing import cog
 
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% USEFUL FUNCTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,7 +82,7 @@ def strehlMeter(PSF, tel, zeroPaddingFactor = 2, display = True, title = ''):
         # plot OTF profiles for visualization
         plt.figure()
         xArray  = np.linspace(0,1, np.int64(tel.resolution * zeroPaddingFactor/2))
-        plt.semilogy(xArray, profile, label = 'OTF', lineWidth = '2')
+        plt.semilogy(xArray, profile, label = 'OTF', linewidth = 2)
         plt.semilogy(xArray, profilea, label = 'Perfect OTF')
         plt.title(title + ' Strehl ' + str(np.round(np.sum(OTF) / np.sum(OTFa) * 100, 1)))
         plt.legend()

@@ -139,7 +139,12 @@ class Telescope:
         self.isInitialized= True
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PSF COMPUTATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
+    # def computePerfectCoronoPSF(self,zeroPaddingFactor=2, display = False):
+    #     supportPadded [center-self.resolution//2:center+self.resolution//2,center-self.resolution//2:center+self.resolution//2] = amp_mask*self.pupil*self.pupilReflectivity*np.sqrt(self.src.fluxMap)*np.exp(1j*phase)
+    #     self.PSFpc = 
+        
 
+        
     def computeCoronoPSF(self,zeroPaddingFactor=2, display = False, coronagraphDiameter = 4.5):
 
         # coronagraphDiameter is the FPM diameter in L/D of imaging wavelength

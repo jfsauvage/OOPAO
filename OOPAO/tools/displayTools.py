@@ -278,7 +278,7 @@ def interactive_plot_text(x,y,text_array, event_name ='button_press_event'):
     plt.show()
     
 
-def compute_gif(cube, name, vect = None, vlim = None, fps = 2):
+def compute_gif(cube, name, folder = '', vect = None, vlim = None, fps = 2):
     from matplotlib import animation, rc
     rc('animation', html='html5')    
     data = cube.copy()
@@ -297,13 +297,13 @@ def compute_gif(cube, name, vect = None, vlim = None, fps = 2):
             labelbottom=False,
             labelleft=False)
     plt.tight_layout()
-    SR =ax.text(50, 200,'SR: '+str(np.round(vect[0],1))+'%',color=(1,1,1),fontsize = 14,weight = 'bold')
+    # SR =ax.text(50, 200,'SR: '+str(np.round(vect[0],1))+'%',color=(1,1,1),fontsize = 14,weight = 'bold')
 
     def init():
         tmp = np.copy(data[0,:,:])
         tmp[np.where(tmp==0)] = np.inf
         line.set_data(np.fliplr(np.flip(tmp.T)))
-        SR.set_text('SR: '+str(100*np.round(vect[0],2))+'%')
+        # SR.set_text('SR: '+str(100*np.round(vect[0],2))+'%')
         if vlim is None:
             line.set_clim(vmin = np.min(data[0,:,:]), vmax = np.max(data[0,:,:]))
         else:
@@ -317,7 +317,7 @@ def compute_gif(cube, name, vect = None, vlim = None, fps = 2):
         tmp = np.copy(data[i,:,:])
         tmp[np.where(tmp==0)] = np.inf
         line.set_data(np.fliplr(np.flip(tmp.T)))
-        SR.set_text('SR: '+str(100*np.round(vect[i],2))+'%')
+        # SR.set_text('SR: '+str(100*np.round(vect[i],2))+'%')
         if vlim is None:
             line.set_clim(vmin = np.min(data[i,:,:]), vmax = np.max(data[i,:,:]))
         else:
@@ -327,7 +327,7 @@ def compute_gif(cube, name, vect = None, vlim = None, fps = 2):
     anim = animation.FuncAnimation(fig, animate, init_func=init,
                                     frames=data.shape[0], interval=100)
     
-    folder = 'C:/Users/cheritier/Documents/gif_from_python/'
+    # folder = 'C:/Users/cheritier/Documents/gif_from_python/'
     anim.save(folder+name+'.gif', writer='imagemagick', fps=fps)
     return
 
